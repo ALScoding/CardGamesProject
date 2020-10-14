@@ -9,15 +9,24 @@
     padding: 10px 90px;
 }
 
-.innerHeader {
+.innerHeader1 {
     background-image: url('../cards_png/red-cloth.png');
     border-radius: 30px;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 150px;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     position: static;
     -webkit-text-stroke: 0.5px gray;
+}
+
+.innerHeader2 {
+    border-radius: 30px;
+    width: 400px;
+    height: 100px;
+    margin: auto;
+    padding: 10px;
+    position: static;
 }
 
 body {
