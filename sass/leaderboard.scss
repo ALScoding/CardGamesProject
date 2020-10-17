@@ -1,0 +1,18 @@
+// Partial used
+// _default.scss
+@use 'default';
+
+table {
+    color: black;
+    font-size: medium;
+    border-collapse: collapse;
+    width: 30%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border: groove;
+  }
+  tr:nth-child(even) {background-color: #D3D3D3;}
+  tr:nth-child(odd) {background-color: #f2f2f2;}

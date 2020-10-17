@@ -1,35 +1,47 @@
 var queryString = decodeURIComponent(window.location.search)
 queryString = queryString.substring(1)
 var queries = queryString.split('&')
-//for (var i = 0; i < queries.length; i++) {
-//    document.write(queries[i] + '<br>')
-//}
 
-//return random number of 1 - 20
-function randomScore(num) {
-    return num + Math.floor(Math.random() * 20) + 1
+//return random number of 1 - 15
+function randomScore (num) {
+  return num + Math.floor(Math.random() * 15) + 1
 }
 
-//cool stuff
+//fake leaderboard names
 var leaderboard = [
-    ['God', 12],
-    ['Cherry', randomScore(17)],
-    ['Lolly', randomScore(29)],
-    ['Danny', randomScore(31)],
-    ['Jeff', randomScore(43)],
-    ['Ron', randomScore(55)],
-    ['Zack', randomScore(67)],
-    ['Merry', randomScore(79)],
-    ['Loser', 999]
+  ['GOD', 12],
+  ['Mitch', randomScore(15)], //
+  ['Betsy', randomScore(18)], //
+  ['Edna', randomScore(21)], //
+  ['Opal', randomScore(24)], //
+  ['Janet', randomScore(27)], //
+  ['Louis', randomScore(30)], //
+  ['Hazel', randomScore(33)], //
+  ['Dora', randomScore(36)], //
+  ['Thomas', randomScore(39)], //
+  ['Stan', randomScore(42)], //
+  ['Connie', randomScore(45)], //
+  ['Noel', randomScore(48)], //
+  ['Keith', randomScore(51)], //
+  ['Roxanne', randomScore(54)], //
+  ['Gilbert', randomScore(57)], //
+  ['Isabel', randomScore(60)], //
+  ['Wilma', randomScore(63)], //
+  ['Zack', randomScore(66)], //
+  ['Paloma', randomScore(69)], //
+  ['Frederic', randomScore(72)], //
+  ['Alicia', randomScore(75)], //
+  ['Cesar', randomScore(78)], //
+  ['Loser', 999]
 ]
 
 if (queries[0] && queries[1]) {
-    leaderboard.push([queries[0], queries[1]])
+  leaderboard.push([queries[0], queries[1]])
 }
 
 //You can sort it sort it by number(second index)
 leaderboard.sort(function (a, b) {
-    return a[1] - b[1]
+  return a[1] - b[1]
 })
 
 leaderboard.sort((a, b) => a[1] - b[1])
@@ -40,37 +52,48 @@ var newrow = 0
 
 leaderboard.forEach(fillTable)
 
-function fillTable(item) {
-    var table = document.getElementById('myTable');
-    var row = table.insertRow(++newrow)
-    var cell0 = row.insertCell(0)
-    var cell1 = row.insertCell(1)
-    var cell2 = row.insertCell(2)
-    cell0.innerHTML = '#' + ++counting
-    cell1.innerHTML = item[0]
-    cell2.innerHTML = item[1]
+function fillTable (item) {
+  var table = document.getElementById('myTable')
+  var row = table.insertRow(++newrow)
+  var cell0 = row.insertCell(0)
+  var cell1 = row.insertCell(1)
+  var cell2 = row.insertCell(2)
+  cell0.innerHTML = '#' + ++counting
+  cell1.innerHTML = item[0]
+  cell2.innerHTML = item[1]
 }
 
 if (queries[0] && queries[1]) {
+  var namesOnly = []
+  var attemptsOnly = []
 
-    var namesOnly = []
-    var attemptsOnly = []
+  for (i = 0; i < leaderboard.length; i++) {
+    namesOnly.push(leaderboard[i][0])
+    attemptsOnly.push(leaderboard[i][1])
+  }
 
-    for (i = 0; i < leaderboard.length; i++) {
-        namesOnly.push(leaderboard[i][0])
-        attemptsOnly.push(leaderboard[i][1])
-    }
+  //IndexOf
+  var placement = namesOnly.indexOf(queries[0])
 
-    var placement = namesOnly.indexOf(queries[0])
+  //    // Find method (return element < your attempts)
+  //    var found = attemptsOnly.find(element => element < queries[1])
 
-    //IndexOf
-    document.write('You placed #' + (placement + 1) + ' on the leaderboard. ')
-
-//    // Find method (return element < your attempts)
-//    var found = attemptsOnly.find(element => element < queries[1])
-
-    document.write(placement == 0 ? 'It took you only ' + attemptsOnly[0] + ' attempts? That\'s impossible. You must be a cheater!' :
-        ((queries[1] == attemptsOnly[placement - 1] ? 'You tied with ' : 'You placed behind ') + namesOnly[placement - 1] + ' who has ' + attemptsOnly[placement - 1] + ' attempts. Try again soon!'))
+  document.getElementById('results').innerHTML =
+    placement == 0
+      ? '...Really?! It took you only ' +
+        attemptsOnly[0] +
+        " attempts?! That's impossible. You must be a cheater!"
+      : 'You placed #' +
+        (placement + 1) +
+        ' on the leaderboard. ' +
+        (queries[1] == attemptsOnly[placement - 1]
+          ? 'You tied with '
+          : 'You placed behind ') +
+        namesOnly[placement - 1] +
+        ' who has ' +
+        attemptsOnly[placement - 1] +
+        ' attempts. Try again soon!'
 } else {
-    document.write('Your name will inserted into this leaderboard if you play and finish the game.')
+  document.getElementById('results').innerHTML =
+    'Your name will inserted into this leaderboard if you play and finish the memory game.'
 }

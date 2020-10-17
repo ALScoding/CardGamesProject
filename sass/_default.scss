@@ -1,0 +1,8 @@
+$font-stack: Arial, Helvetica, sans-serif;
+$primary-color: white;
+
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+  background-image: url('../cards_png/slide-bg.png');
+}

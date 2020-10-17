@@ -1,0 +1,38 @@
+// Partial used
+// _default.scss
+@use 'default';
+
+$deg: 60deg;
+$num: 0.8;
+$time: 1.5s;
+
+// transform mixin
+@mixin transform_Me($deg, $num) {
+	width: 10%;
+	height: auto;
+	-ms-transform: rotate($deg/3) scale($num);
+	transform: rotate($deg/3) scale($num);
+}
+
+.sampleCards1 {
+	@include transform_Me($deg, $num);
+}
+
+.sampleCards2 {
+	@include transform_Me(-$deg, $num);
+}
+
+.sampleCards1,
+.sampleCards2 {
+	-moz-transition: transform $time;
+	-webkit-transition: transform $time;
+	transition: transform $time;
+}
+
+.rot1 {
+	transform: rotate(-$deg/2);
+}
+
+.rot2 {
+	transform: rotate($deg/2);
+}

@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-image: url("../cards_png/slide-bg.png");
+}
+
+h2 {
+  color: goldenrod;
+  font-weight: bold;
+}
+
+#accordion {
+  background-image: url("../cards_png/red-cloth.png");
+  border-radius: 30px;
+  width: 75%;
+}
+
+.collapse {
+  color: goldenrod;
+  font-size: larger;
+  padding-bottom: 50px;
+}
+
+/*# sourceMappingURL=cardrules.css.map */

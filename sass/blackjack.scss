@@ -1,0 +1,100 @@
+// Partial used
+// _default.scss
+@use 'default';
+
+$fcolor: goldenrod;
+
+.btn {
+    padding: 20px 30px;
+    cursor: pointer;
+    background: #222;
+    color: white !important;
+    border-radius: 0px;
+}
+
+.btn:hover {
+    background: dodgerblue;
+}
+
+.game {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 30px;
+    background-image: url('../cards_png/red-cloth.png');
+    text-align: center;
+    min-height: 400px;
+
+    .game-messages {
+        padding: 10px;
+        border-style: solid;
+        border-radius: 30px;
+        border-color: $fcolor;
+        color: $fcolor;
+        font-size: larger;
+        width: 90%;
+        margin: 0 auto;
+        background: green;
+    }
+
+    .game-body {
+        padding: 20px;
+    }
+
+    .game-options {
+        text-align: center;
+    }
+
+    .card {
+        width: 50px;
+        height: 80px;
+        padding: 10px;
+        border: solid 1px #808080;
+        background-color: white;
+        display: inline-block;
+        border-radius: 10px;
+        font-size: 10pt;
+        text-align: center;
+        margin: 3px;
+        border: solid 3px;
+    }
+
+    .status {
+        display: inline-block;
+        background: $fcolor;
+        border: solid 5px white;
+        border-radius: 10px;
+        padding: 5px 20px;
+        margin: 0 auto;
+        margin-top: 10px;
+        display: none;
+    }
+}
+
+.players {
+    width: 450px;
+    margin-left: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.player {
+    width: 100%;
+    border: solid 10px black;
+    border-radius: 10px;
+    padding: 10px;
+    display: inherit;
+    margin: 5%;
+    vertical-align: top;
+    background: green;
+}
+
+.player.active {
+    border: solid 10px $fcolor;
+}
+
+.points {
+    text-align: right;
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 1px;
+}

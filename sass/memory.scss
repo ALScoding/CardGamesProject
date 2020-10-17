@@ -1,3 +1,7 @@
+// Partial used
+// _default.scss
+@use 'default';
+
 *,
 *::before,
 *::after {
@@ -9,29 +13,34 @@
     padding: 10px 90px;
 }
 
-.innerHeader1 {
-    background-image: url('../cards_png/red-cloth.png');
+.innerHeader1,
+.innerHeader2 {
     border-radius: 30px;
     width: 400px;
     height: 150px;
     margin: auto;
     padding: 10px;
     position: static;
+}
+
+.innerHeader1 {
+    background-image: url('../cards_png/red-cloth.png');
     -webkit-text-stroke: 0.5px gray;
 }
 
 .innerHeader2 {
-    border-radius: 30px;
-    width: 400px;
-    height: 100px;
-    margin: auto;
-    padding: 10px;
-    position: static;
-}
+    font-size: larger;
 
-body {
-    margin: 10px 0px;
-    background-image: url('../cards_png/slide-bg.png');
+    #chooseColor, .confName{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 20px;
+    }
+
+    #uname{
+        width: 80%;
+    }
 }
 
 .grid {
@@ -47,8 +56,6 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 264px;
-    width: 173px;
     position: relative;
     transition: all 0.3s linear;
     transform-style: preserve-3d;

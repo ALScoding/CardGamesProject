@@ -1,38 +1,21 @@
 // color of suits is determined by user input
 const chooseColor = document.querySelector('#chooseColor')
+
 chooseColor.onclick = function () {
   const rbs = document.querySelectorAll('input[name="choice"]')
-  let selectedValue, choice
   for (const rb of rbs) {
     if (rb.checked) {
       selectedValue = rb.value
       break
     }
   }
-
-  switch (parseInt(selectedValue)) {
-    case 1:
-      choice = 'black'
-      break
-    case 2:
-      choice = 'red'
-      break
-    case 3:
-      choice = 'random'
-      break
-    default:
-      choice = 'none'
-      alert('You did not choose a color!')
-  }
-  var queryString = '?' + choice
-  if (choice != 'none') {
-    window.location.href = 'memory.html' + queryString
-  }
+  window.location.href =
+    'memory.html' + '?' + choiceMap.get(parseInt(selectedValue))
 }
 
-var queryString2 = decodeURIComponent(window.location.search)
-queryString2 = queryString2.substring(1)
-var queries = queryString2.split('&')
+var queryString = decodeURIComponent(window.location.search)
+queryString = queryString.substring(1)
+var queries = queryString.split('&')
 
 var username
 // saves inputted username
@@ -44,7 +27,7 @@ function saveName () {
   }
 }
 
-//prompt if no username is inputted
+//prompt occurs if no username is inputted
 function noName () {
   var yourname = prompt('Please submit your name:')
   if (yourname == null || yourname == '') {
@@ -52,6 +35,11 @@ function noName () {
   } else {
     username = yourname
   }
+}
+
+// min and max included
+function randomIntFromInterval (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 //deck does not include aces in this game
@@ -71,10 +59,18 @@ var values = [
   'Queen',
   'King'
 ]
-var deck = new Array()
 
-function createDeck (suits) {
-  deck = new Array()
+const choiceMap = new Map([
+  [1, 'black'],
+  [2, 'red'],
+  [3, 'random']
+])
+
+function createDeck (color) {
+  var deck = new Array()
+
+  var suits = color == 1 ? suitsB : suitsR
+
   for (var i = 0; i < values.length; i++) {
     for (var x = 0; x < suits.length; x++) {
       var card = {
@@ -88,7 +84,6 @@ function createDeck (suits) {
           '.png'
       }
       deck.push(card)
-      //console.log(card)
     }
   }
   return deck
@@ -97,46 +92,45 @@ function createDeck (suits) {
 
 let gameGrid,
   message1,
-  message2,
-  backcolor,
-  chosencolor = queries[0]
+  chosenColor = queries[0]
+
+// change word to number 1 or 2, then create deck
+if (chosenColor) {
+  switch (chosenColor) {
+    case 'black':
+      chosenColor = 1
+      break
+    case 'red':
+      chosenColor = 2
+      break
+    default:
+      chosenColor = randomIntFromInterval(1, 2)
+  }
+
+  gameGrid = createDeck(parseInt(chosenColor))
+}
+
+var colorName = choiceMap.get(chosenColor)
+
+message1 = chosenColor
+  ? 'Match the ' + colorName + ' cards!'
+  : 'Please select a card color before you begin'
+
+document.getElementById('message').innerHTML = message1
+
+if (chosenColor) {
+  document.getElementById('attempts').innerHTML = 'Attempts: 0'
+  // text color is also changed
+  document.getElementById('message').style.color = colorName
+  document.getElementById('attempts').style.color = colorName
+}
 
 //show username input field
 var x = document.getElementById('yourName')
-if (chosencolor) {
+if (chosenColor) {
   x.style.display = 'block'
 }
-// set up the grid, add card suits with the same color,
-// message that mentions the color, and back color
-if (chosencolor == 'random') {
-  chosencolor = Math.round(Math.random()) == 0 ? 'black' : 'red'
-}
 
-if (chosencolor == 'black') {
-  gameGrid = createDeck(suitsB)
-  message1 = 'Match the black cards!'
-  message2 = 'Attempts: 0'
-  backcolor = `url('cards_png/gray_back.png')`
-} else if (chosencolor == 'red') {
-  gameGrid = createDeck(suitsR)
-  message1 = 'Match the red cards!'
-  message2 = 'Attempts: 0'
-  backcolor = `url('cards_png/red_back.png')`
-} else {
-  message1 = 'Please select a card color before you begin'
-  document.getElementById('message').style.color = 'gold'
-}
-console.log(message1)
-document.getElementById('message').innerHTML = message1
-if (message2) {
-  document.getElementById('attempts').innerHTML = message2
-}
-
-// text color is also changed
-if (chosencolor) {
-  document.getElementById('message').style.color = chosencolor
-  document.getElementById('attempts').style.color = chosencolor
-}
 // randomize the game grid on each refresh
 gameGrid.sort(() => 0.5 - Math.random())
 
@@ -144,9 +138,10 @@ let firstGuess = '',
   secondGuess = '',
   count = 0,
   pairs = 0,
-  attempts = 0, //accessed from leaderboard.js ?
+  attempts = 0,
   previousTarget = null,
-  delay = 750
+  delay = 750,
+  pairsAmount = 12
 
 // grab the div with an id of game
 const game = document.getElementById('game')
@@ -168,7 +163,10 @@ gameGrid.forEach(item => {
   // create back of card
   const back = document.createElement('div')
   back.classList.add('back')
-  back.style.backgroundImage = backcolor
+  back.style.backgroundImage =
+    chosenColor == 1
+      ? `url('cards_png/gray_back.png')`
+      : `url('cards_png/red_back.png')`
 
   // apply a card class to that div
   card.classList.add('card')
@@ -197,7 +195,7 @@ const match = () => {
     card.classList.add('match')
     var innerContent = card.innerHTML
     card.innerHTML =
-      chosencolor === 'red'
+      chosenColor == 2
         ? innerContent.replace('red_back.png', 'green_back.png')
         : innerContent.replace('gray_back.png', 'green_back.png')
   })
@@ -212,23 +210,24 @@ const match = () => {
       '!'
   )
   // change messages and text color when all 12 pairs are found
-  if (pairs === 12) {
+  checkWin(pairs)
+}
+
+function checkWin (pairs) {
+  if (pairs === pairsAmount) {
     document.getElementById('message').innerHTML = 'You Finished!'
     document.getElementById('message').style.color = 'gold'
     document.getElementById('attempts').style.color = 'gold'
     playSound(3)
-
-    //send over the # of attempts
-
-    //export attempts something
 
     //page changes after 4 seconds
     setTimeout(() => {
       if (username === undefined) {
         noName()
       }
-      var queryString3 = '?' + username + '&' + attempts
-      window.location.href = 'leaderboard.html' + queryString3
+      //username and attempts put into query string
+      var queryString2 = '?' + username + '&' + attempts
+      window.location.href = 'leaderboard.html' + queryString2
     }, 4000)
   }
 }
@@ -250,8 +249,6 @@ const resetGuesses = () => {
 
   // update the attempts number
   document.getElementById('attempts').innerHTML = 'Attempts: ' + attempts
-
-  console.log('')
 }
 
 // function that plays a sound effect
