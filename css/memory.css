@@ -27,7 +27,8 @@ body {
 
 .innerHeader1 {
   background-image: url("../cards_png/red-cloth.png");
-  -webkit-text-stroke: 0.5px gray;
+  color: gold;
+  -webkit-text-stroke: 0.5px white;
 }
 
 .innerHeader2 {
