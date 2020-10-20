@@ -4,13 +4,15 @@
 
 $fcolor: goldenrod;
 $gcolor: green;
-$border: solid 5px black;
+$border1: solid 5px black;
+$border2: solid 5px goldenrod;
+
 .btn {
     padding: 20px 30px;
     cursor: pointer;
     background: #222;
     color: white !important;
-    border-radius: 0px;
+    border-radius: 1px;
 }
 
 .btn:hover {
@@ -25,7 +27,7 @@ $border: solid 5px black;
 
 #totalWins1, #totalWins2 {
     width: 25%;
-    border: $border;
+    border: $border1;
     border-radius: 10px;
     padding: 10px;
     display: inherit;
@@ -50,9 +52,8 @@ $border: solid 5px black;
     min-height: 400px;
 
     .game-messages {
-        border-style: solid;
         border-radius: 30px;
-        border-color: $fcolor;
+        border: $border2;
         color: $fcolor;
         font-size: larger;
         -webkit-text-stroke: 0.5px white;
@@ -109,7 +110,7 @@ $border: solid 5px black;
 
 .player {
     width: 100%;
-    border: $border;
+    border: $border1;
     border-radius: 10px;
     padding: 10px;
     display: inherit;
@@ -117,7 +118,7 @@ $border: solid 5px black;
 }
 
 .active {
-    border: solid 5px $fcolor;
+    border: $border2;
 }
 
 .points {

@@ -9,7 +9,7 @@ body {
   cursor: pointer;
   background: #222;
   color: white !important;
-  border-radius: 0px;
+  border-radius: 1px;
 }
 
 .btn:hover {
@@ -49,9 +49,8 @@ body {
   min-height: 400px;
 }
 .game .game-messages {
-  border-style: solid;
   border-radius: 30px;
-  border-color: goldenrod;
+  border: solid 5px goldenrod;
   color: goldenrod;
   font-size: larger;
   -webkit-text-stroke: 0.5px white;
