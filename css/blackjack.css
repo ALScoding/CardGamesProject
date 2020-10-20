@@ -16,6 +16,30 @@ body {
   background: dodgerblue;
 }
 
+.winsDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 900px;
+}
+
+#totalWins1, #totalWins2 {
+  width: 25%;
+  border: solid 5px black;
+  border-radius: 10px;
+  padding: 10px;
+  display: inherit;
+  background: green;
+  font-size: larger;
+}
+
+#totalWins1 {
+  margin-left: -80px;
+}
+
+#totalWins2 {
+  margin-left: 80px;
+}
+
 .game {
   width: 90%;
   margin: 10px auto;
@@ -79,7 +103,7 @@ body {
 
 .player {
   width: 100%;
-  border: solid 10px black;
+  border: solid 5px black;
   border-radius: 10px;
   padding: 10px;
   display: inherit;
@@ -87,7 +111,7 @@ body {
 }
 
 .active {
-  border: solid 10px goldenrod;
+  border: solid 5px goldenrod;
 }
 
 .points {
