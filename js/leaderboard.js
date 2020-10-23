@@ -22,32 +22,29 @@ for (i = 1; i < namesOnly.length - 1; i++) {
 //score for Loser
 attemptsOnly.push(999)
 
-console.log(namesOnly.length + ' ' + attemptsOnly)
-
 //push data from queries
 if (queries[0] && queries[1]) {
     namesOnly.push(queries[0])
-    attemptsOnly.push(queries[1])
+    attemptsOnly.push(parseInt(queries[1]))
 }
 
-//sort both arrays by # of attempts
-attemptsOnly.sort()
-
-namesOnly.sort(function (a, b) {
-    return attemptsOnly.indexOf(a) - attemptsOnly.indexOf(b)
-})
+console.log(namesOnly)
+console.log(attemptsOnly)
 
 convertToJSON(namesOnly, attemptsOnly)
 
-function convertToJSON() {
+function convertToJSON(arr1, arr2) {
     var tmp = new Array()
-    for (i = 0; i < namesOnly.length; i++) {
-        tmp[i] = new Player(namesOnly[i], attemptsOnly[i])
+    for (i = 0; i < arr1.length; i++) {
+        tmp[i] = new Player(arr1[i], arr2[i])
     }
     console.log(tmp)
 
+    var order = arr2.sort()
+    var tmp2 = mapOrder(tmp, order, 'pAttempts');
+
     myDataObj = new Object
-    myDataObj.Players = tmp
+    myDataObj.Players = tmp2
 
     objectJSON = JSON.stringify(myDataObj)
     console.log(objectJSON)
@@ -58,24 +55,39 @@ function Player(pName, attmpts) {
     this.pAttempts = attmpts
 }
 
+function mapOrder(arr, order, key) {
+    arr.sort(function (a, b) {
+        var A = a[key],
+            B = b[key]
+        if (order.indexOf(A) > order.indexOf(B)) {
+            return 1
+        } else {
+            return -1
+        }
+    })
+    return arr
+}
+
 var ranking = 0
 
 fetch('http://dummy.restapiexample.com/api/v1/employees')
     .then(response => leaderboardData = response.json())
     .then(function (result) {
-        var data = result.data;
+        var data = result.data
         for (var i = 0; i <= data.length - 1; i++) {
             $('#myTable')
                 .append('<tr>' + '<td>' + ('#' + ++ranking) +
                     '<td>' + (data[i].pName) + '</td>' +
                     '<td>' + (data[i].pAttempts) + '</td>' +
-                    '</tr>');
+                    '</tr>')
         }
     })
 
 if (queries[0] && queries[1]) {
     //IndexOf
     var placement = namesOnly.indexOf(queries[0])
+
+    //fetch('?????????' + queries[1]).then(response => response.json()).then(json => console.log(json))
 
     document.getElementById('results').innerHTML =
         placement == 0 ?
