@@ -19,13 +19,14 @@ for (i = 1; i < namesOnly.length - 1; i++) {
     initAtt = initAtt + 3
 }
 
-//score for Loer
-attemptsOnly.push(999)
-
+//push data from queries
 if (queries[0] && queries[1]) {
     namesOnly.push(queries[0])
     attemptsOnly.push(queries[1])
 }
+
+//score for Loser
+attemptsOnly.push(999)
 
 //sort both arrays by # of attempts
 attemptsOnly.sort()
