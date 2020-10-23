@@ -6,14 +6,14 @@ body {
 
 table {
   color: black;
-  font-size: medium;
+  font-size: large;
   border-collapse: collapse;
-  width: 30%;
+  width: 40%;
 }
 
 th, td {
   text-align: left;
-  padding: 8px;
+  padding: 5px;
   border: groove;
 }
 
@@ -23,6 +23,16 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
   background-color: #f2f2f2;
+}
+
+#table-wrapper {
+  position: static;
+}
+
+#table-scroll {
+  height: 450px;
+  overflow: auto;
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=leaderboard.css.map */
