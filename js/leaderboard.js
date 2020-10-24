@@ -1,121 +1,136 @@
-var queryString = decodeURIComponent(window.location.search)
-queryString = queryString.substring(1)
-var queries = queryString.split('&')
+// var queryString = decodeURIComponent(window.location.search)
+// queryString = queryString.substring(1)
+// var queries = queryString.split('&')
 
-//return random number of 1 - 15
-function randomScore (num) {
-  return num + Math.floor(Math.random() * 15) + 1
-}
+// //return random number of 1 - 15
+// function randomScore (num) {
+//   return num + Math.floor(Math.random() * 15) + 1
+// }
 
-var namesOnly = [
-  'GOD',
-  'Mitch',
-  'Betsy',
-  'Edna',
-  'Opal',
-  'Janet',
-  'Louis',
-  'Hazel',
-  'Dora',
-  'Thomas',
-  'Stan',
-  'Connie',
-  'Noel',
-  'Keith',
-  'Roxanne',
-  'Gilbert',
-  'Isabel',
-  'Wilma',
-  'Zack',
-  'Paloma',
-  'Frederic',
-  'Alicia',
-  'Cesar',
-  'Loser'
-]
+// var namesOnly = [
+//   'GOD',
+//   'Mitch',
+//   'Betsy',
+//   'Edna',
+//   'Opal',
+//   'Janet',
+//   'Louis',
+//   'Hazel',
+//   'Dora',
+//   'Thomas',
+//   'Stan',
+//   'Connie',
+//   'Noel',
+//   'Keith',
+//   'Roxanne',
+//   'Gilbert',
+//   'Isabel',
+//   'Wilma',
+//   'Zack',
+//   'Paloma',
+//   'Frederic',
+//   'Alicia',
+//   'Cesar',
+//   'Loser'
+// ]
 
-var initAtt = 15
+// var initAtt = 15
 
-//score for GOD
-var attemptsOnly = [12]
+// //score for GOD
+// var attemptsOnly = [12]
 
-for (i = 1; i < namesOnly.length - 1; i++) {
-  attemptsOnly.push(randomScore(initAtt))
-  initAtt = initAtt + 3
-}
+// for (i = 1; i < namesOnly.length - 1; i++) {
+//   attemptsOnly.push(randomScore(initAtt))
+//   initAtt = initAtt + 3
+// }
 
-//score for Loser
-attemptsOnly.push(999)
+// //score for Loser
+// attemptsOnly.push(999)
 
-//push data from queries
-if (queries[0] && queries[1]) {
-  namesOnly.push('*' + queries[0] + '*')
-  attemptsOnly.push(parseInt(queries[1]))
-}
+// //push data from queries
+// if (queries[0] && queries[1]) {
+//   namesOnly.push('*' + queries[0] + '*')
+//   attemptsOnly.push(parseInt(queries[1]))
+// }
 
-console.log(namesOnly)
-console.log(attemptsOnly)
+// console.log(namesOnly)
+// console.log(attemptsOnly)
 
-convertToJSON(namesOnly, attemptsOnly)
+// convertToJSON(namesOnly, attemptsOnly)
 
-function convertToJSON (arr1, arr2) {
-  var tmp = new Array()
-  for (i = 0; i < arr1.length; i++) {
-    tmp[i] = new Player(arr1[i], arr2[i])
-  }
-  console.log(tmp)
+// function convertToJSON (arr1, arr2) {
+//   var tmp = new Array()
+//   for (i = 0; i < arr1.length; i++) {
+//     tmp[i] = new Player(arr1[i], arr2[i])
+//   }
+//   console.log(tmp)
 
-  var order = arr2.sort()
-  var tmp2 = mapOrder(tmp, order, 'pAttempts')
+//   var order = arr2.sort()
+//   var tmp2 = mapOrder(tmp, order, 'pAttempts')
 
-  // if (queries[0] && queries[1]) {
-  //     displayMessage(tmp2)
-  // } else {
-  //     document.getElementById('results').innerHTML =
-  //         'Your name will inserted into this leaderboard if you play and finish the memory game.'
-  // }
+//   if (queries[0] && queries[1]) {
+//     displayMessage(tmp2)
+//   } else {
+//     document.getElementById('results').innerHTML =
+//       'Your name will inserted into this leaderboard if you play and finish the memory game.'
+//   }
 
-  myDataObj = new Object()
-  myDataObj.Players = tmp2
+//   myDataObj = new Object()
+//   myDataObj.Players = tmp2
 
-  objectJSON = JSON.stringify(myDataObj)
-  console.log(objectJSON)
+//   objectJSON = JSON.stringify(myDataObj)
+//   console.log(objectJSON)
 
-  return objectJSON
-}
+//   return objectJSON
+// }
 
-function Player (pName, attmpts) {
-  this.pName = pName
-  this.pAttempts = attmpts
-}
+// function Player (pName, attmpts) {
+//   this.pName = pName
+//   this.pAttempts = attmpts
+// }
 
-function mapOrder (arr, order, key) {
-  arr.sort(function (a, b) {
-    var A = a[key],
-      B = b[key]
-    if (order.indexOf(A) > order.indexOf(B)) {
-      return 1
-    } else {
-      return -1
-    }
-  })
-  return arr
-}
+// function mapOrder (arr, order, key) {
+//   arr.sort(function (a, b) {
+//     var A = a[key],
+//       B = b[key]
+//     if (order.indexOf(A) > order.indexOf(B)) {
+//       return 1
+//     } else {
+//       return -1
+//     }
+//   })
+//   return arr
+// }
 
+var leaderArr = []
 var ranking = 0
 
-//fetch('api/leaderboard')
-//    .then(response => leaderboardData = response.json())
-//    .then(function (result) {
-//        var data = result.data
-//        for (var i = 0; i <= data.length - 1; i++) {
-//            $('#myTable')
-//                .append('<tr>' + '<td>' + ('#' + ++ranking) +
-//                    '<td>' + (data[i].pName) + '</td>' +
-//                    '<td>' + (data[i].pAttempts) + '</td>' +
-//                    '</tr>')
-//        }
-//    })
+fetch('https://my-leaderboard-api.herokuapp.com/api/leaderboard')
+  .then(response => (leaderboardData = response.json()))
+  .then(function (result) {
+    leaderArr = result.data
+    for (var i = 0; i <= data.length - 1; i++) {
+      $('#myTable').append(
+        '<tr>' +
+          '<td>' +
+          ('#' + ++ranking) +
+          '<td>' +
+          leaderArr[i].pName +
+          '</td>' +
+          '<td>' +
+          leaderArr[i].pAttempts +
+          '</td>' +
+          '</tr>'
+      )
+    }
+  })
+
+if (queries[0] && queries[1]) {
+  displayMessage(leaderArr)
+} else {
+  document.getElementById('results').innerHTML =
+    'Your name will inserted into this leaderboard if you play and finish the memory game.'
+}
 
 function displayMessage (leaderArr) {
   console.log(leaderArr)
