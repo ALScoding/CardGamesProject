@@ -108,7 +108,7 @@ var ranking = 0
 fetch('https://my-leaderboard-api.herokuapp.com/api/leaderboard')
   .then(response => (leaderboardData = response.json()))
   .then(function (result) {
-    leaderArr = result.data
+    leaderArr = result.Players
     for (var i = 0; i <= leaderArr.length - 1; i++) {
       $('#myTable').append(
         '<tr>' +
