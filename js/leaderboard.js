@@ -38,24 +38,24 @@ function displayMessage (leaderArr) {
   for (i = 0; i < leaderArr.length; i++) {
     if (leaderArr[i]['pName'] == queries[0]) {
       var uAttempts = leaderArr[i]['pAttempts']
-      var uPlacement = i + 1
+      var uPlace = i
       break
     }
   }
 
   document.getElementById('results').innerHTML =
-    uPlacement == 0
+    uPlace == 0
       ? '...Really?! It took you only ' +
         uAttempts +
         " attempts?! That's impossible. You must be a cheater!"
       : 'You placed #' +
-        uPlacement +
+        (uPlace + 1) +
         ' on the leaderboard. ' +
-        (uAttempts == leaderArr[i - 1]['pAttempts']
+        (uAttempts == leaderArr[uPlace - 1]['pAttempts']
           ? 'You tied with '
           : 'You placed behind ') +
-        leaderArr[i - 1]['pName'] +
+        leaderArr[uPlace - 1]['pName'] +
         ' who has ' +
-        leaderArr[i - 1]['pAttempts'] +
+        leaderArr[uPlace - 1]['pAttempts'] +
         ' attempts. Try again soon!'
 }
