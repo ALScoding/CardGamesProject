@@ -28,7 +28,7 @@ fetch('https://my-leaderboard-api.herokuapp.com/api/leaderboard')
 if (queries[0] && queries[1]) {
   setTimeout(() => {
     displayMessage(leaderArr)
-  }, 3000)
+  }, 1000)
 } else {
   document.getElementById('results').innerHTML =
     'Your name will inserted into this leaderboard if you play and finish the memory game.'
