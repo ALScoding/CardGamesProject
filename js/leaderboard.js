@@ -109,7 +109,7 @@ fetch('https://my-leaderboard-api.herokuapp.com/api/leaderboard')
   .then(response => (leaderboardData = response.json()))
   .then(function (result) {
     leaderArr = result.data
-    for (var i = 0; i <= data.length - 1; i++) {
+    for (var i = 0; i <= leaderArr.length - 1; i++) {
       $('#myTable').append(
         '<tr>' +
           '<td>' +
