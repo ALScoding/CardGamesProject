@@ -1,6 +1,6 @@
-// var queryString = decodeURIComponent(window.location.search)
-// queryString = queryString.substring(1)
-// var queries = queryString.split('&')
+var queryString = decodeURIComponent(window.location.search)
+queryString = queryString.substring(1)
+var queries = queryString.split('&')
 
 // //return random number of 1 - 15
 // function randomScore (num) {
