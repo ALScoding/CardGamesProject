@@ -1,50 +1,58 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Blackjack</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/blackjack.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/blackjack.css" />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
     <script src="js/navbar.js"></script>
-</head>
-<header>
+  </head>
+  <header>
     <div id="nav-placeholder"></div>
-</header>
-
-<body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  </header>
+  <body>
     <div class="game">
-        <div class="game-messages">
-            <h2 id="status">Press Start to begin playing Blackjack</h2>
+      <div class="game-messages">
+        <h2 id="status">Press Start to begin playing Blackjack</h2>
+      </div>
+      <div class="game-body">
+        <div class="game-options">
+          <input
+            type="button"
+            id="btnStart"
+            class="btn"
+            value="Start"
+            onclick="startblackjack()"
+          />
+          <input
+            type="button"
+            id="btnHitMe"
+            class="btn"
+            value="Hit Me"
+            onclick="hitMe()"
+          />
+          <input
+            type="button"
+            id="btnStay"
+            class="btn"
+            value="Stay"
+            onclick="stay()"
+          />
         </div>
-        <div class="game-body">
-            <div class="game-options">
-                <input type="button" id="btnStart" class="btn" value="Start" onclick="startblackjack()">
-                <input type="button" id="btnHitMe" class="btn" value="Hit Me" onclick="hitMe()">
-                <input type="button" id="btnStay" class="btn" value="Stay" onclick="stay()">
-            </div>
-            <center>
-                <div id="winsDisplay" class="winsDisplay">
-                </div>
-                <div class="status" id="status"></div>
-                <div id="players" class="players">
-                </div>
-            </center>
-            <div class="clear"></div>
-        </div>
+        <center>
+          <div id="winsDisplay" class="winsDisplay"></div>
+          <div class="status" id="status"></div>
+          <div id="players" class="players"></div>
+        </center>
+        <div class="clear"></div>
+      </div>
     </div>
     <script src="js/blackjack.js" async defer></script>
-</body>
-
+  </body>
 </html>

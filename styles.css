@@ -5,19 +5,20 @@
 	@version 1.0
 	@date 29.06.2017
 */
+
 html {
   height: 100%;
 }
 
 body {
-  background: rgba(30,66,0,1);
-  background: -moz-linear-gradient(top, rgba(30,66,0,1) 0%, rgba(35,161,16,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(30,66,0,1)), color-stop(100%, rgba(35,161,16,1)));
-  background: -webkit-linear-gradient(top, rgba(30,66,0,1) 0%, rgba(35,161,16,1) 100%);
-  background: -o-linear-gradient(top, rgba(30,66,0,1) 0%, rgba(35,161,16,1) 100%);
-  background: -ms-linear-gradient(top, rgba(30,66,0,1) 0%, rgba(35,161,16,1) 100%);
-  background: linear-gradient(to bottom, rgba(30,66,0,1) 0%, rgba(35,161,16,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e4200', endColorstr='#23a110', GradientType=0 );
+  background: rgba(30, 66, 0, 1);
+  background: -moz-linear-gradient(top, rgba(30, 66, 0, 1) 0%, rgba(35, 161, 16, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(30, 66, 0, 1)), color-stop(100%, rgba(35, 161, 16, 1)));
+  background: -webkit-linear-gradient(top, rgba(30, 66, 0, 1) 0%, rgba(35, 161, 16, 1) 100%);
+  background: -o-linear-gradient(top, rgba(30, 66, 0, 1) 0%, rgba(35, 161, 16, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(30, 66, 0, 1) 0%, rgba(35, 161, 16, 1) 100%);
+  background: linear-gradient(to bottom, rgba(30, 66, 0, 1) 0%, rgba(35, 161, 16, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e4200', endColorstr='#23a110', GradientType=0);
   min-height: 100%;
 }
 
@@ -26,9 +27,9 @@ body {
   padding-top: 20px;
 }
 
-#dealer{
+#dealer {
   box-sizing: border-box;
-  padding-left:154px;
+  padding-left: 154px;
 }
 
 .container {
@@ -38,23 +39,23 @@ body {
   justify-content: flex-start;
   height: 214px;
   position: relative;
-  width:100%;
+  width: 100%;
 }
 
-#deck{
-  top:55px;
-  left:15px;
+#deck {
+  top: 55px;
+  left: 15px;
   z-index: 10;
   position: absolute;
   width: 120px;
   height: 180px;
   border-radius: 5px;
-  padding:2px;
+  padding: 2px;
   background-color: #F6F7EB;
   display: block;
-  -webkit-box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
-  -moz-box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
-  box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
+  -webkit-box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
+  box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
 }
 
 .card {
@@ -65,41 +66,36 @@ body {
   border-radius: 5px;
   font-weight: bold;
   font-size: 28px;
-  padding:2px;
+  padding: 2px;
   background-color: #F6F7EB;
   display: flex;
-  -webkit-box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
-  -moz-box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
-  box-shadow: 2px -2px 9px -1px rgba(0,0,0,1);
-  margin:15px;
+  -webkit-box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
+  box-shadow: 2px -2px 9px -1px rgba(0, 0, 0, 1);
+  margin: 15px;
 }
 
 .back {
   background: #36c;
-  background:
-  linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
-  linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
-  linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
-  linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
-  #36c;
+  background: linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, .8) 75%) 7px -15px, #36c;
   background-size: 15px 30px;
-  width:96%;
+  width: 96%;
   height: 98%;
   margin: 1% auto;
   border-radius: 5px;
 }
 
 .diamonds, .hearts {
-  color:#E94F37;
+  color: #E94F37;
 }
 
 .spades, .clubs {
-  color:#393E41;
+  color: #393E41;
 }
 
 .rank {
   position: absolute;
-  width:30px;
+  width: 30px;
   height: 28px;
 }
 
@@ -109,18 +105,18 @@ body {
 }
 
 .bottom {
-  bottom:0;
+  bottom: 0;
   right: 2px;
   text-align: right;
 }
 
 .suit {
-  margin:auto;
+  margin: auto;
   font-size: 60px;
 }
 
 .border-line {
-  border:4px dashed #F6F7EB;
+  border: 4px dashed #F6F7EB;
   opacity: 0.4;
   margin: 20px 0;
 }
@@ -132,11 +128,12 @@ body {
   color: #F6F7EB;
   opacity: 0.7;
   font-size: 20px;
-  z-index:10;
+  z-index: 10;
   text-shadow: 1px 1px 2px rgba(10, 10, 10, 1);
 }
 
 /* footer */
+
 #panel {
   text-align: center;
   background-color: #40434E;
@@ -157,8 +154,9 @@ body {
 }
 
 /* buttons */
+
 button {
-  border:none;
+  border: none;
   border-radius: 5px;
   padding: 15px 25px;
   font-size: 20px;
