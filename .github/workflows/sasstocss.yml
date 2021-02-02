@@ -19,6 +19,6 @@ jobs:
 
       # Runs the Super-Linter action
       - name: Run Sass converter
-        run: 
-          - npm i
-          - npm run sassy
+        run: |
+          npm i
+          npm run sassy
