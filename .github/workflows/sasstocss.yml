@@ -20,7 +20,4 @@ jobs:
       # Runs the Super-Linter action
       - name: Run Sass converter
         run: npm i
-        run: npm init
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sassy
