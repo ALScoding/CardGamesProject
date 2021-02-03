@@ -5,18 +5,18 @@
 $fcolor: goldenrod;
 
 h2 {
-    color:$fcolor;
-    font-weight: bold;
+  color: $fcolor;
+  font-weight: bold;
 }
 
 #accordion {
-    background-image: url('../cards_png/red-cloth.png');
-    border-radius: 30px;
-    width: 75%;
+  background-image: url("../cards_png/red-cloth.png");
+  border-radius: 30px;
+  width: 75%;
 }
 
 .collapse {
-    color: $fcolor;
-    font-size: larger;
-    padding-bottom: 50px;
+  color: $fcolor;
+  font-size: larger;
+  padding-bottom: 50px;
 }
