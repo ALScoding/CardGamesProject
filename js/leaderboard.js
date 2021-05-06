@@ -31,7 +31,7 @@ if (queries[0] && queries[1]) {
   }, 1000)
 } else {
   document.getElementById('results').innerHTML =
-    'Your name will inserted into this leaderboard if you play and finish the memory game.'
+    'If the Leaderboard API is running, your name will be inserted into this leaderboard when you play and finish the memory game.'
 }
 
 function displayMessage (leaderArr) {
